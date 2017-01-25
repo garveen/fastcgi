@@ -1,0 +1,22 @@
+{
+    "name": "garveen/fastcgi",
+    "description": "An effective FastCGI to psr-7 adapter",
+    "type": "library",
+    "keywords": ["fastcgi","psr-7","psr7"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gavin",
+            "email": "acabin@live.com"
+        }
+    ],
+    "require": {
+        "psr/http-message": "^1.0",
+        "guzzlehttp/psr7": "^1.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Garveen\\FastCgi\\": "src/"
+        }
+    }
+}
