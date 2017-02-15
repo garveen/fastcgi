@@ -14,10 +14,8 @@ composer require garveen/fastcgi
 use Garveen\FastCgi\FastCgi;
 use Psr\Http\Message\ServerRequestInterface;
 
-$fastcgi = new FastCgi($requestCallback, $sendCallback, $closeCallback, $logger);
-// Once you have recevied a FastCGI network-package, just pass it to the instance:
+// First of all, define 3 callbacks
 
-$fastcgi->receive(int $fd, string $data);
 // When a request is ready, this library will call $requestCallback:
 $requestCallback = function (ServerRequestInterface $serverRequest) {
 	// Do something...
@@ -37,5 +35,10 @@ $closeCallback = function (int $fd) {
 	fclose($downstreams[$fd]);
 };
 
+// The instance
+$fastcgi = new FastCgi($requestCallback, $sendCallback, $closeCallback, $logger);
+
+// Once you have recevied a FastCGI network-package, just pass it to the instance:
+$fastcgi->receive(int $fd, string $data);
 ```
 
