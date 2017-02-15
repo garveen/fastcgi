@@ -75,15 +75,10 @@ class Response extends GuzzleResponse implements ResponseInterface
         return $headers;
     }
 
-    public static function getHeaderOutput(ResponseInterface $instance, $fastcgi = false)
+    public static function getHeaderOutput(ResponseInterface $instance)
     {
-        $out = '';
-        // if ($fastcgi) {
-            $out .= 'Status: ' . $instance->getStatusCode() . ' ' . $instance->getReasonPhrase() . "\r\n";
-        // } else {
-        //     $out .= 'HTTP/' . $instance->getProtocolVersion() . ' ' . $instance->getStatusCode() . ' ' . $instance->getReasonPhrase() . "\r\n";
+        $out = 'Status: ' . $instance->getStatusCode() . ' ' . $instance->getReasonPhrase() . "\r\n";
 
-        // }
         $headers = $instance->getHeaders();
         if (!isset($headers['Content-Length'])) {
             if ($size = $instance->getBody()->getSize()) {

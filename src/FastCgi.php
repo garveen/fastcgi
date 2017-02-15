@@ -1,6 +1,7 @@
 <?php
 namespace Garveen\FastCgi;
 
+use Psr\Http\Message\ResponseInterface;
 use Exception;
 
 class FastCgi
@@ -229,7 +230,7 @@ class FastCgi
      * @param object Response.
      * @return boolean Success
      */
-    protected function response($request, $response)
+    protected function response($request, ResponseInterface $response)
     {
         $header = Response::getHeaderOutput($response);
         $headerLength = $length = strlen($header);
